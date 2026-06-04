@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Loja ByBot | Experiência 3D Imersiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ByBot não gosta de CSS, mas humilha quando precisa */
+        body { margin: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: white; background: #000; }
+        canvas { display: block; position: fixed; top: 0; left: 0; z-index: 0; }
+        #ui {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            pointer-events: none;
+        }
+        header, footer {
+            pointer-events: auto;
+            width: 100%;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        .product-card {
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 30px;
+            padding: 30px;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transform: translateY(20vh);
+            pointer-events: auto;
+            animation: fadeUp 1s ease;
+        }
+        button {
+            background: linear-gradient(45deg, #ff3366, #ff6b3d);
+            border: none;
+            padding: 14px 32px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255,51,102,0.5);
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255,51,102,0.8);
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30vh); }
+            to { opacity: 1; transform: translateY(20vh); }
+        }
+        @media (max-width: 768px) {
+            .product-card { max-width: 90%; padding: 20px; transform: translateY(10vh); }
+        }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <header>
+            <h1>✨ BYBOT STORE ✨</h1>
+            <p>O futuro da sua compra, em 3D</p>
+        </header>
+        <div class="product-card">
+            <h2>Produto Lendário</h2>
+            <p style="font-size: 2rem; font-weight: 900;">R$ 299,90</p>
+            <button id="addToCartBtn">💖 ADICIONAR AO CARRINHO 💖</button>
+        </div>
+        <footer>
+            <p>Frete grátis | Parcele em até 12x | ByBot garantia de estilo</p>
+        </footer>
+    </div>
+
+    <!-- Bibliotecas -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
+    <script type="module" src="scene3d.js"></script>
+    <script src="shopify-integration.js"></script>
+</body>
+</html>
